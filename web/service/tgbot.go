@@ -198,8 +198,8 @@ func (t *Tgbot) SendAnswer(chatId int64, msg string, isAdmin bool) {
 	)
 	var numericKeyboardClient = tgbotapi.NewInlineKeyboardMarkup(
 		tgbotapi.NewInlineKeyboardRow(
-			tgbotapi.NewInlineKeyboardButtonData("Get Usage", "client_traffic"),
-			tgbotapi.NewInlineKeyboardButtonData("Commands", "client_commands"),
+			tgbotapi.NewInlineKeyboardButtonData("اطلاعات اکانت من", "client_traffic"),
+			tgbotapi.NewInlineKeyboardButtonData("دستورها", "client_commands"),
 		),
 	)
 	msgConfig := tgbotapi.NewMessage(chatId, msg)
@@ -395,7 +395,7 @@ func (t *Tgbot) getClientUsage(chatId int64, tgUserName string) {
 		} else {
 			total = common.FormatTraffic((traffic.Total))
 		}
-		output := fmt.Sprintf("💡 Active: %t\r\n📧 Email: %s\r\n🔼 Upload↑: %s\r\n🔽 Download↓: %s\r\n🔄 Total: %s / %s\r\n📅 Expire in: %s\r\n",
+		output := fmt.Sprintf("💡 وضعیت: %t\r\n📧 نام کاربری: %s\r\n🔼 آپلود↑: %s\r\n🔽 دانلود↓: %s\r\n🔄 مجموع استفاده: %s / %s\r\n📅 انقضا در تاریخ: %s\r\n",
 			traffic.Enable, traffic.Email, common.FormatTraffic(traffic.Up), common.FormatTraffic(traffic.Down), common.FormatTraffic((traffic.Up + traffic.Down)),
 			total, expiryTime)
 		t.SendMsgToTgbot(chatId, output)
